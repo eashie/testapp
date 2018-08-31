@@ -29,7 +29,8 @@ public class GreetingEndpoint {
     @GET
     @Produces("application/json")
     public Greeting greeting(@QueryParam("name") @DefaultValue("SuchDefaultVeryWow") String name) {
-        final String message = String.format(Greeting.FORMAT, name);
+        final String message = String.format(Greeting.FORMAT, name) + " From " + System.getenv("HOSTNAME");
+        System.out.println(message);
         return new Greeting(message);
     }
 }
